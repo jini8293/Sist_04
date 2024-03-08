@@ -1,0 +1,81 @@
+package simpleguest.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
+import mysql.db.DbConnect;
+import myworld.model.WorldDto;
+
+
+public class GuestDao {
+	
+	DbConnect db = new DbConnect();
+	
+	//추가
+	public void insertGuest(GuestDto dto) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "insert into simpleguest values(null,?,?,?,?,now())";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getImage());
+			pstmt.setString(2, dto.getNickname());
+			pstmt.setString(3, dto.getPass());
+			pstmt.setString(4, dto.getContent());
+
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+
+	}
+	
+	//전체목록
+	public ArrayList<GuestDto> getAllMyWorld() {
+		ArrayList<GuestDto> list = new ArrayList<GuestDto>();
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from simpleguest order by num desc";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				GuestDto dto = new GuestDto();
+
+				dto.setNum(rs.getString("num"));
+				dto.setImage(rs.getString("image"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setPass(rs.getString("pass"));
+				dto.setContent(rs.getString("content"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
+
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+}

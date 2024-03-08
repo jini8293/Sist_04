@@ -1,0 +1,14 @@
+package simpleguest.model;
+
+import mysql.db.DbConnect;
+
+public class GuestDao {
+	
+	DbConnect db = new DbConnect();
+	
+	//추가
+	
+	
+	//전체목록
+
+}
