@@ -127,18 +127,20 @@ i.bi {
 				}
 			});
 		});
-
-		//목록의 삭제 버튼
-		$(document).on("click", "i.bi-x-circle", function() {
+		
+		
+		
+		
+		
+	//목록의 삭제 버튼
+	$(document).on("click", "i.bi-x-circle", function() {
 			var num = $(this).attr("num");
 			/* alert(num); */
 			$.ajax({
 				type : "get",
 				dataType : "html",
 				url : "worldDelete.jsp",
-				data : {
-					"num" : num
-				},
+				data:{"num":num},
 				success : function() {
 					list();
 
@@ -146,87 +148,85 @@ i.bi {
 			});
 
 		});
-
-		//목록의 수정 버튼
-		$(document).on("click", "i.bi-cloud-upload", function() {
-			var num = $(this).attr("num");
-			//alert(num);
-			//폼의 unum에 num넣기
-			$("#unum").val(num);
-			$.ajax({
-				type : "get",
-				dataType : "json",
-				url : "worldGetData.jsp",
-				data : {
-					"num" : num
-				},
-				success : function(res) {
-
-					//수정폼 태그안에 넣어준다
-					$("#unum").val(res.num);
-					$("#uwriter").val(res.writer);
-					$("#ucontent").val(res.content);
-					$("#uavata").val(res.avata);
-
-					//해당이미지에 select클래스 추가
-					$("img.uavata").each(function(i, ele) {
-
-						if ($(this).attr("src") == res.avata) {
-							$(this).addClass("select");
-						} else {
-							$(this).removeClass("select");
-						}
-
-					});
-
-					//추가 폼이 있음 숨기고 수정폼으로 나타낸다
-					$("div.addform").hide();
-					$("div.updateForm").show();
-
-					$("img.uavata").click(function() {
-						$(this).siblings().removeClass("select");
+	
+	//목록의 수정 버튼
+	$(document).on("click", "i.bi-cloud-upload", function() {
+		var num = $(this).attr("num");
+		//alert(num);
+		//폼의 unum에 num넣기
+		$("#num").val(num);
+		 $.ajax({
+			type : "get",
+			dataType : "json",
+			url : "worldGetData.jsp",
+			data:{"num":num},
+			success : function(res) {
+				
+				//수정폼 태그안에 넣어준다
+				$("#num").val(res.num);
+				$("#uwriter").val(res.writer);
+				$("#ucontent").val(res.content);
+				$("#uavata").val(res.avata);
+				
+				//해당이미지에 select클래스 추가
+				$("img.uavata").each(function (i,ele) {
+					
+					if($(this).attr("src")==res.avata){
 						$(this).addClass("select");
-						$("#uavata").val($(this).attr("src"));
-					})
+					}else{
+						$(this).removeClass("select");
+					}
+					
+				});
+				
+				//추가 폼이 있음 숨기고 수정폼으로 나타낸다
+				$("div.addform").hide();
+				$("div.updateForm").show();
+				
+				$("img.uavata").click(function() {
+					$(this).siblings().removeClass("select");
+					$(this).addClass("select");
+					$("#uavata").val($(this).attr("src"));
+				})
 
-				}
-			});
-
+			}
 		});
 
-		//수정 폼 저장
-		$("#dbUpdate").click(function() {
-
-			var s = $("#updatefrm").serialize();
-			/*   alert(s); */
-			$.ajax({
-				type : "post",
-				url : "worldUpdate.jsp",
-				dataType : "html",
-				data : s,
-				success : function() {
-
-					//추가 성공시 목록 다시 출력
-					list();
-					//입력값 초기화
-					$("#uwriter").val("");
-					$("#ucontent").val("");
-
-					$("img.uavata").removeClass("select");
-					$("img.uavata").eq(2).addClass("select");
-					var imgSrc = $("img.uavata").eq(2).attr("src");
-					$("#uavata").val(imgSrc);
-				}
-			})
-
-		})
-
+	});
+	
+	//수정 폼 저장
+    $("#dbUpdate").click(function(){
+       
+       var s=$("#updatefrm").serialize();
+     /*   alert(s); */
+      $.ajax({
+          type:"post",
+          url:"worldUpdate.jsp",
+          dataType:"html",
+          data:s,
+          success:function(){
+        	  
+             
+             //추가 성공시 목록 다시 출력
+             list();
+             //입력값 초기화
+             $("#uwriter").val("");
+             $("#ucontent").val("");
+             
+             $("img.uavata").removeClass("select");
+             $("img.uavata").eq(2).addClass("select");
+             var imgSrc=$("img.uavata").eq(2).attr("src");
+             $("#uavata").val(imgSrc);
+          }
+       })
+       
+    })   
+	
 	});
 
 	//사용자 함수 list
 	function list() {
-		$
-				.ajax({
+		$.ajax({
 					type : "get",
 					dataType : "json",
 					url : "worldList.jsp",
@@ -320,8 +320,8 @@ i.bi {
 	</div>
 
 	<div class="hello updateForm">
-		<form id="updatefrm">
-			<input type="hidden" id="unum" name="unum">
+	<form id="updatefrm">
+	<input type="hidden" id="unum" name="unum">
 			<table class="table table-bordered">
 				<caption align="top">
 					<h2>방명록 수정</h2>
