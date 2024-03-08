@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+  <%
+    String sum = Integer(request.getParameter("sum"));
+	String hp = request.getParameter("hp");
+	System.out.println("name: "+name);
+	System.out.println("hp: "+hp);
+    %>
+    <name><%=name %></name>

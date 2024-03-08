@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hahmlet:wght@100..900&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Poor+Story&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<title>Insert title here</title>
+<style type="text/css">
+   div.hello{
+      position: absolute;
+      border: 0px solid gray;
+      font-family: 'Hahmlet';
+      font-size: 1.5em;
+   }
+   
+   div.button{
+      left: 150px;
+      top: 30px;
+      width: 400px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+   }
+   
+   div.addform, div.updateform{
+      left: 100px;
+      top: 150px;
+      width: 500px;
+      height: 450px;
+      padding: 20px 20px;
+   }
+   
+   img.avata{
+      cursor: pointer;
+   }
+   
+   img.select{
+      border: 3px solid orange;
+   }
+   
+   div.list{
+      left: 800px;
+      top: 100px;
+      width: 600px;
+      height: 1000px;
+      padding: 20px 20px;
+   }
+   
+   .bi{
+      float: right;
+      margin-left: 20px;
+   }
+   
+   
+</style>
+
+<script type="text/javascript">
+   $(function() {
+      
+      //list 호출
+      list();
+      
+      //처음에 추가폼 없는 상태
+      $("div.addform").hide();
+      $("div.updateform").hide();
+      
+      //버튼 누르면 추가폼 나오고 사라지게
+      $("#btnadd").click(function() {
+         $("div.updateform").hide();
+         $("div.addform").slideToggle('fast');
+      });
+      
+      //아바타 이미지에 기본 하나 select클래스 추가
+      $("img.avata").eq(2).addClass("select");
+      
+      //2번 아바타의 src값을 얻어서 input태그에 추가
+      var imgSrc=$("img.avata").eq(2).attr("src");
+      $("#avata").val(imgSrc);
+      
+      //아바타 선택시 값 변경하기
+      $("img.avata").click(function(){
+         /* $("img.avata").removeClass("select") */
+         $(this).siblings().removeClass("select");
+         var s=$(this).addClass("select").attr("src");
+         $("#avata").val(s);
+      });
+      
+      //추가폼 저장
+      $("#dbSave").click(function(){
+         
+         var s=$("#addfrm").serialize();
+         
+         $.ajax({
+            type:"post",
+            url:"worldInsert.jsp",
+            dataType:"html",
+            data:s,
+            success:function(){
+               
+               //추가 성공시 목록 다시 출력
+               list();
+               //입력값 초기화
+               $("#writer").val("");
+               $("#content").val("");
+               
+               $("img.avata").removeClass("select");
+               $("img.avata").eq(2).addClass("select");
+               var imgSrc=$("img.avata").eq(2).attr("src");
+               $("#avata").val(imgSrc);
+            }
+         })
+         
+      })
+      
+      //삭제
+      $(document).on("click","i.bi-trash", function(){
+         
+         var num=$(this).attr("num");
+         /* alert(num); 클릭 되는지 확인 후 진행*/
+         $.ajax({
+            type:"get",
+            url:"worldDelete.jsp",
+            dataType:"html",
+            data:{"num":num},
+            success:function(){
+               list();
+            }
+         })
+      });
+      
+      //수정시 아바타 선택시 값변경
+      $("img.uavata").click(function(){
+         /* $("img.avata").removeClass("select") */
+         $(this).siblings().removeClass("select");
+         var s=$(this).addClass("select").attr("src");
+         $("#uavata").val(s);
+      });
+      
+      //목록의 수정아이콘.. 동적메서드
+      $(document).on("click","i.bi-arrow-clockwise",function(){
+         
+         var num=$(this).attr("num");
+         //alert(num);
+         
+         //폼의 unum에 num넣기
+         $("#unum").val(num);
+         
+         $.ajax({
+            type:"get",
+            url:"worldGetData.jsp",
+            dataType:"json",
+            data:{"num":num},
+            success:function(res){
+               //수정폼 태그안에 넣어줌
+               $("#unum").val(res.num);
+               $("#uwriter").val(res.writer);
+               $("#ucontent").val(res.content);
+               $("#uavata").val(res.avata);
+               
+               //해당이미지에 select클래스 추가
+               $("img.uavata").each(function(i,ele){
+                  
+                  if($(this).attr("src")==res.avata){
+                     $(this).addClass("select");
+                  }else{
+                     $(this).removeClass("select");
+                  }
+               })
+               //추가폼이 있으면 숨기고 수정폼을 나타냄
+               $("div.addform").hide();
+               $("div.updateform").show();
+            }
+         })
+      })
+      
+      //수정
+      $("#dbUpdate").click(function(){
+         
+         var s=$("#updatefrm").serialize(); //속성들의 모든 name을 읽어옴
+         $.ajax({
+            type:"post",
+            url:"worldUpdate.jsp",
+            dataType:"html",
+            data:s,
+            success:function(){
+               
+               //추가 성공시 목록 다시 출력
+               list();
+               //입력값 초기화
+               $("#uwriter").val("");
+               $("#ucontent").val("");
+               
+               $("img.uavata").removeClass("select");
+               $("img.uavata").eq(2).addClass("select");
+               var imgSrc=$("img.uavata").eq(2).attr("src");
+               $("#uavata").val(imgSrc);
+            }
+         })
+      })         
+   })
+   
+   //사용자 함수 list
+   function list() {
+      $.ajax({
+         type:"get",
+         url:"worldList.jsp",
+         dataType:"json",
+         success:function(res){
+            //alert("리스트 수: "+res.length);
+            var s="";
+            if(res.length==0){
+               s+="<h3 class='alert alert-info'>저장된 방명록이 없음</h3>";
+            }else{
+               $.each(res, function(i,ele){
+                  s+="<table class='table table-bordered'>"
+                  s+="<tr height='100'><td>"
+                  s+="작성자: "+ele.writer+"<br>";
+                  s+="<img src='"+ele.avata+"' align='right' width='200'><br>";
+                  s+="<pre style='font-family: Hahmlet'>남기는 말:<br>"+ele.content+"</pre><br>";
+                  s+="작성날짜: "+ele.writeday+"<br>";
+                  s+="<i class='bi bi-trash' num="+ele.num+"></i>"
+                  s+="<i class='bi bi-arrow-clockwise' num="+ele.num+"></i></td>"
+                  s+="</table>";
+               })
+            }
+            $("div.list").html(s);
+         }
+      })
+   }
+</script>
+</head>
+<body>
+   <div class="hello button">
+      <button type="button" class="btn btn-success"
+      id="btnadd" style="width: 120px">방명록 추가</button>   
+   </div>
+   
+   <div class="hello addform">
+      <form id="addfrm">
+         <table class="table table-bordered">
+            <caption align="top"><b>방명록 추가</b></caption>
+            <tr>
+               <th>작성자</th>
+               <td>
+                  <input type="text" class="form-control input-sm"
+                  name="writer" id="writer" style="width: 120px;">
+               </td>
+            </tr>
+            
+            <tr>
+               <th>남기는 말</th>
+               <td>
+                  <textarea style="width: 300px; height: 100px;"
+                  class="form-control" name="content" id="content"></textarea>
+               </td>
+            </tr>
+            
+            <tr>
+               <th>아바타</th>
+                <td>
+                   <input type="hidden" name="avata" id="avata">
+                   <script type="text/javascript">
+                      var s="";   
+                      for(var i=1;i<=10;i++){
+                         s+="<img src='../image/avata/b"+i+".png' width='50' class='avata'>";
+                         
+                         if(i==5){
+                            s+="<br>";
+                         }
+                      }
+                      document.write(s);
+                   </script>
+                </td>   
+            </tr>
+            
+            <tr>
+               <td colspan="2" align="center">
+                  <button type="button" class="btn btn-info" id="dbSave">DB 저장</button>               
+               </td>
+            </tr>
+         </table>
+      </form>   
+   </div>
+   
+   <div class="hello updateform">
+      <form id="updatefrm">
+      <!-- hidden으로 num보내기.. 수정폼에서 가장 중요함 -->
+         <input type="hidden" id="unum" name="unum">
+         <table class="table table-bordered">
+            <caption align="top"><b>방명록 수정</b></caption>
+            <tr>
+               <th>작성자</th>
+               <td>
+                  <input type="text" class="form-control input-sm"
+                  name="uwriter" id="uwriter" style="width: 120px;">
+               </td>
+            </tr>
+            
+            <tr>
+               <th>남기는 말</th>
+               <td>
+                  <textarea style="width: 300px; height: 100px;"
+                  class="form-control" name="ucontent" id="ucontent"></textarea>
+               </td>
+            </tr>
+            
+            <tr>
+               <th>아바타</th>
+                <td>
+                   <input type="hidden" name="uavata" id="uavata">
+                   <script type="text/javascript">
+                      var s="";   
+                      for(var i=1;i<=10;i++){
+                         s+="<img src='../image/avata/b"+i+".png' width='50' class='uavata'>";
+                         
+                         if(i==5){
+                            s+="<br>";
+                         }
+                      }
+                      document.write(s);
+                   </script>
+                </td>   
+            </tr>
+            
+            <tr>
+               <td colspan="2" align="center">
+                  <button type="button" class="btn btn-info" id="dbUpdate">DB 수정</button>               
+               </td>
+            </tr>
+         </table>
+      </form>
+   
+   </div>
+   <div class="hello list">list</div>
+</body>
+</html>

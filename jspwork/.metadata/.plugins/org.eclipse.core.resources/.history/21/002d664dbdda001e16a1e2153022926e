@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&display=swap"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+	ul li{
+		list-style: none;
+		width: 150px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		border: 3px solid black;
+		margin: 5px;
+		float: left;
+		cursor: pointer;
+		font-family: Black Han Sans;
+	}
+</style>
+<script type="text/javascript">
+
+$(function() {
+
+	//Q.01
+	$("li:eq(0)").hover(function() {
+		$("#show").html("<img src='../image/food/1.jpg' width='600' style='margin-left:15px;'>");
+	},function(){
+		$("#show").empty();
+	});
+	
+	//Q.02
+	$("li:eq(1)").hover(function() {
+		
+		$.ajax({
+			type:"get",
+			url:"foodtojson.jsp",
+			dataType:"json",
+			success : function(res) {
+				
+				var s = "<table class='table table-bordered' style='width:700px;'> ";
+				s+="<caption align='top' ><b text-family='Black Han Sans'>Food</b></caption>";
+				s+="<tr class='table-dark' align='center'>";
+				s+="<th>No.</th>";
+				s+="<th>foodname</th>";
+				s+="<th>foodimage</th>"
+				s+="<th>price</th>"
+				s+="<th>개수</th>"
+				s+="</tr>";
+				
+				$.each(res,function(i,ele){
+					s+="<tr align='center' valign='middle'>";
+					s+="<td>"+ele.num+"</td>";
+					s+="<td>"+ele.foodname+"</td>";
+					s+="<td><img src='../image/food/"+ele.foodphoto+".jpg' width='100'></td>";
+					s+="<td>"+ele.price+"<br><div class='box' style='background-color:"+ele.color+";'></div></td>";
+					s+="<td>"+ele.cnt+"</td>";
+					
+					
+				});
+				
+				s+="</table>"
+				$("#show").html(s);
+			}
+		});
+	});
+	
+	//Q.03
+	$("li:eq(2)").hover(function() {
+
+		$.ajax({
+			type : "get",
+			url : "infotoxml.jsp",
+			dataType : "xml",
+			success : function(res) {
+				
+				var s ="";
+				$(res).find("info").each(function(i,ele) {
+					
+				
+				var m = $(ele);
+				s+="<div class ='alert alert-info' style='width:400px'>";
+					s+="번호 : " + m.attr("num") + "<br>";
+					s += "<img src = '" + m.find("photo").text() + "' width='100'>" + "<br>";
+				s += "이름: " + m.find("name").text() + "<br>";
+				s += "전화번호: " + m.find("hp").text() + "<br>";
+				s += "나이: " + m.find("age").text() + "<br>";
+				s+="</div>";
+				});
+				$("#show").html(s);
+			}
+
+		});
+	});
+	
+});
+</script>
+</head>
+<body>
+	<ul>
+		<li>Home</li>
+		<li>food</li>
+		<li>info</li>
+	</ul>
+	
+	<div style="clear: both;"></div>
+
+	<div id="show" style="margin-top: 50px;"></div>
+</body>
+</html>

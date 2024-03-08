@@ -1,0 +1,23 @@
+package team.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.mysql.cj.protocol.PacketSentTimeHolder;
+
+import mysql.db.DbConnect;
+
+public class TeamDao {
+
+	DbConnect db = new DbConnect();
+
+	public void insertTeam() {
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		String sql = "insert into team (name,driver, addr, writeday) values(?,?,?,now())";
+
+	}
+
+}

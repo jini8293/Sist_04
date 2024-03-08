@@ -1,0 +1,5 @@
+package myworld.model;
+
+public class WorldDto {
+
+}
