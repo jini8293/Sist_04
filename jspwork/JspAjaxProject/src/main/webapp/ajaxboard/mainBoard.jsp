@@ -15,14 +15,14 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-div.list,div.detail{
+div.list,div.detail, div.updateform{
 	position: absolute;
 	left: 100px;
 	top: 100px;
 
 }
 
-div.addform, div.updateform{
+div.addform{
 	position: absolute;
 	left: 900px;
 	top: 100px;
@@ -192,7 +192,7 @@ div.list *,div.addform,div.detail *,div.updateform{
 					$("#usubject").val(res.subject);
 					$("#uavata").val(res.avata);
 					
-
+					$("div.detail").hide();
 					$("div.updateform").show();
 				}
 			});
