@@ -1,5 +1,0 @@
-package mysql.db;
-
-public class DbConnect {
-
-}

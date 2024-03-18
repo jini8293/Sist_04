@@ -2,16 +2,27 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.mysql.cj.protocol.PacketSentTimeHolder"/>
     <fullyQualifiedTypeName name="team.model.TeamDto"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="intro.model.IntroDto"/>
     <fullyQualifiedTypeName name="myworld.model.WorldDto"/>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.security.Timestamp"/>
+    <fullyQualifiedTypeName name="simpleguest.model.GuestDao"/>
+    <fullyQualifiedTypeName name="ajaxboard.AjaxBoardDto"/>
+    <fullyQualifiedTypeName name="myinfo.db.MyInfoDto"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="quizshop.model.QuizShopDto"/>
+    <fullyQualifiedTypeName name="com.oreilly.servlet.CookieNotFoundException"/>
+    <fullyQualifiedTypeName name="java.util.Vector"/>
+    <fullyQualifiedTypeName name="uploadboard.data.UploadBoardDao"/>
+    <fullyQualifiedTypeName name="uploadboard.data.UploadBoardDto"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="simpleboard.data.SimpleBoardDto"/>
+    <fullyQualifiedTypeName name="simpleboardanswer.model.SimpleAnswerDto"/>
+    <fullyQualifiedTypeName name="java.sql.Time"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="mysql.db.DbConnect"/>
-    <fullyQualifiedTypeName name="simpleguest.model.GuestDao"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="mem_gaip.model.MemgaipDto"/>
 </qualifiedTypeNameHistroy>
