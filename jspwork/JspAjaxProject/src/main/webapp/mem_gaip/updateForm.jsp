@@ -1,3 +1,5 @@
+<%@page import="mem_gaip.model.MemgaipDto"%>
+<%@page import="mem_gaip.model.MemgaipDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,43 +22,30 @@
 
 </style>
 </head>
-<script type="text/javascript">
-	function openId() {
-		window.open("idSearch.jsp","idcheck","left='100px', top='100px', width='100px', height='50px'");
-	}
-	
-	$(function() {
-		$("#btnsubmit").click(function(){
-			if(mfrm.m_id.value.length==0){
-				alert("아이디 입력버튼을 눌러주세요");
-				return false; //form 액션 호출 안되게
-			}
-		})
-	})
-</script>
-
+<%
+String m_num = request.getParameter("m_num");
+MemgaipDao dao = new MemgaipDao();
+MemgaipDto dto = dao.getData(m_num);
+%>
 <body>
 <div style="margin: 50px 100px; width: 500px;" class="div1">
-	<form action="addMember.jsp" method="post" enctype="multipart/form-data" name="mfrm">
+	<form action="updateAction.jsp" method="post" enctype="multipart/form-data" name="mfrm">
+	 <input type="hidden" name="m_num" value="<%=m_num%>">
 		<table class="table table-bordered">
-			<caption align="top"><b>회원가입</b></caption>
+			<caption align="top"><b>내 정보 수정</b></caption>
 			<tr>
 				<td width="120" class="table-dark" style="text-align: center; font-weight: bold;" valign="middle">아이디</td>
 				<td>
 					<div class="d-inline-flex">
-					<input type="text" class="form-control" style="width: 120px;"
-					 name="m_id" required="required" readonly="readonly">
-					 <button type="button" class="btn btn-outline-danger btn-sm" style="margin-left: 8px;"
-					 onclick="openId()">중복 체크</button>
+					<h5 style="text-align: center; font-weight:bold; margin-top: 5px; margin-left: 5px; font-size: 13pt;" valign="middle"><%=dto.getM_id()%></h5>
 					</div>
 				</td>
 			</tr>
 			
 			<tr>
-				<td width="120" class="table-dark" style="text-align: center; font-weight: bold;" valign="middle">비밀번호</td>
+				<td width="150" class="table-dark" style="text-align: center; font-weight: bold;" valign="middle">비밀번호</td>
 				<td>
-					<input type="password" class="form-control"
-					style="width: 180px;" name="m_pass" required="required">
+					<h5  style="font-weight:bold; margin-top: 5px; margin-left: 5px; font-size: 12pt; color: red;">변경 불가</h5>
 				</td>
 			</tr>
 			
@@ -64,7 +53,7 @@
 				<td width="120" class="table-dark" style="text-align: center; font-weight: bold;" valign="middle">회원명</td>
 				<td>
 					<input type="text" class="form-control"
-					style="width: 120px;" name="m_name" required="required">
+					style="width: 120px;" name="m_name" value="<%=dto.getM_name()%>">
 				</td>
 			</tr>
 			
@@ -72,7 +61,7 @@
 				<td width="120" class="table-dark" style="text-align: center; font-weight: bold;" valign="middle">사진</td>
 				<td>
 					<input type="file" class="form-control"
-					style="width: 250px;" name="m_photo">
+					style="width: 250px;" name="m_photo" value="<%=dto.getM_photo()%>">
 				</td>
 			</tr>
 			
@@ -80,13 +69,14 @@
 				<td width="120" class="table-dark" style="text-align: center; font-weight: bold;" valign="middle">H P</td>
 				<td>
 					<input type="text" class="form-control"
-					style="width: 250px;" name="m_hp">
+					style="width: 250px;" name="m_hp" value="<%=dto.getM_hp()%>">
 				</td>
 			</tr>
 			
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit" class="btn btn-outline-dark" id="btnsubmit">회원가입</button>
+					<button type="submit" class="btn btn-outline-warning" id="btnsubmit">회원수정</button>
+					<button type="button" class="btn btn-outline-dark" onclick="history.back()">취소</button>
 				</td>
 			</tr>
 		</table>

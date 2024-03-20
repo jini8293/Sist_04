@@ -23,13 +23,7 @@
 	boolean check = dao.isEqualPass(m_num, m_pass); 
 	
 	if(check){
-		%>
-		<script type="text/javascript">
-			alert("삭제되었습니다");
-		</script>
-		<%
-		dao.memgaipDelete(m_num);
-		response.sendRedirect("memList.jsp");
+		response.sendRedirect("updateForm.jsp?m_num="+m_num);
 	
 	} else {
 	%>
@@ -40,7 +34,6 @@
 	<%
 	}
 	%>
-
 
 </body>
 </html>
