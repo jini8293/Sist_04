@@ -107,7 +107,6 @@
 		$(document).on("click",".detail",function(){
 			var num = $(this).attr("num");
 			//alert(num);
-			
 			$.ajax({
 				type : "get",
 				dataType : "json",
@@ -127,6 +126,26 @@
 			})
 		
 		});
+		
+		//삭제
+		$(".deletebtn").click(function name() {
+			var num = $(this).attr("num");
+			alert(num);
+			/* $.ajax({
+				type : "get",
+				dataType : "html",
+				url : "boardDelete.jsp",
+				data : {
+					"num" : num
+				},
+				success : function() {
+					list();
+					$("div.detail").hide();
+					$("div.list").show();
+
+				}
+			}); */
+		})
 
 	});
 
@@ -258,9 +277,9 @@
 		</tr>
 		
 		<tr>
-			<td >
+			<td>
 				<button type="button" class="deletebtn btn btn-outline-danger btn-sm"
-				style="float: right; margin-left: 5px;">삭제</button>
+				style="float: right; margin-left: 5px;" >삭제</button>
 				<button type="button" class="updatebtn btn btn-outline-success btn-sm"
 				style="float: right; margin-left: 5px;">수정</button>
 				<button type="button" class="addbtn btn btn-outline-dark btn-sm"
