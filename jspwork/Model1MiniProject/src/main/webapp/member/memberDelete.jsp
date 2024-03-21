@@ -1,5 +1,7 @@
+<%@page import="data.dto.MemberDto"%>
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,25 +13,20 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 <title>Insert title here</title>
-
 </head>
-<%
-//프로젝트 경로
-String root = request.getContextPath();
-%>
 <body>
-	<div>
+<%
 
-		<a href="<%=root%>" style="color: black; text-decoration: none;"><img
-			src="<%=root%>/image/unmbbo.png" width="130"> &nbsp;&nbsp;JSP &
-			JQUERY MINI PROJECT</a>
+String num = request.getParameter("num");
 
-	<span style="margin-left: 400px;">
-	<button type="button"
-		onclick="location.href='index.jsp?main=login/loginForm.jsp'"
-		class="btn btn-outline-danger" >로그인</button>
-		</span>
-		</div>
+MemberDao dao = new MemberDao();
+
+dao.deleteMember(num);
+
+response.sendRedirect("../index.jsp?main=member/memberList.jsp");
+
+%>
 </body>
 </html>

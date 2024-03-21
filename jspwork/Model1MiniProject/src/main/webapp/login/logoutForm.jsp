@@ -1,5 +1,6 @@
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+	String root = request.getContextPath();
+	String id = (String) session.getAttribute("myid");
+
+	MemberDao dao = new MemberDao();
+	String name = dao.getName(id);
+	%>
+	<div style="margin: 100px 400px;">
+		<img src="image/bban2.jpeg" width="200" style="margin-bottom: 30px; border-radius: 200px;">
+		<h4><%=name%>님이 로그인중
+		</h4>
+		<button class="btn btn-outline-danger"
+			onclick="location.href='login/logoutAction.jsp'">로그아웃</button>
+		<button class="btn btn-outline-dark"
+			onclick="location.href='<%=root%>/'">home</button>
+	</div>
 
 </body>
 </html>

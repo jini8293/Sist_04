@@ -57,16 +57,19 @@ String root = request.getContextPath();
 										class="icon-gift"></i> 스마트게시판</a></li>
 							</ul></li>
 						<li><a
-							href="#">로그인</a>
+							href="#">회원</a>
 							<ul class="sub-menu">
 								<li><a
-									href="<%=root%>/index.jsp?main=member/addForm.jsp"><i
+									href="index.jsp?main=login/loginMain.jsp"><i
+										class="icon-gift"></i> 로그인</a></li>
+								<li><a
+									href="index.jsp?main=member/addForm.jsp"><i
 										class="icon-wrench"></i> 회원가입</a></li>
 								<li><a
-									href="#"><i
+									href="index.jsp?main=member/memberList.jsp"><i
 										class="icon-credit-card"></i> 회원목록</a></li>
 								<li><a
-									href="#"><i
+									href="index.jsp?main=member/myPage.jsp"><i
 										class="icon-gift"></i> 마이페이지</a></li>
 							</ul>
 							</li>

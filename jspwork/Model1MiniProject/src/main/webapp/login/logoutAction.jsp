@@ -14,6 +14,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%
+	//로그인에 대한 세션값 삭제
+	session.removeAttribute("loginok");
+	
+	//로그인 메인으로 이동.. 항상 메인을 통해서 이동하게끔
+	response.sendRedirect("../index.jsp?main=login/loginForm.jsp");
+%>
 </body>
 </html>

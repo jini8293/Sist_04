@@ -25,7 +25,7 @@
 
 	%>
 	<div style="margin: 100px 400px;">
-		<img src="<%=root%>/image/success.png" width="200"
+		<img src="image/success.png" width="200"
 			style="margin-bottom: 30px;">
 		<h4><%=name%>님,&nbsp;&nbsp;환영합니다!
 		</h4>
