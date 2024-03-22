@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,17 +20,38 @@
 String root = request.getContextPath();
 %>
 <body>
-	<div>
 
-		<a href="<%=root%>" style="color: black; text-decoration: none;"><img
-			src="<%=root%>/image/unmbbo.png" width="130"> &nbsp;&nbsp;JSP &
-			JQUERY MINI PROJECT</a>
+	<div class="d-inline-flex">
+	<a href="<%=root%>" style="color: black; text-decoration: none; "><img
+		src="<%=root%>/image/unmbbo.png" width="130" style="margin-top: 18px; margin-left: 90px;"></a>
+	</div>
+	<div style="float: right; padding-right: 50px;">
+		<%
+		String loginok = (String) session.getAttribute("loginok");
+		String myid = (String) session.getAttribute("myid");
 
-	<span style="margin-left: 400px;">
-	<button type="button"
-		onclick="location.href='index.jsp?main=login/loginForm.jsp'"
-		class="btn btn-outline-danger" >로그인</button>
-		</span>
-		</div>
+		MemberDao dao = new MemberDao();
+		String name = dao.getName(myid);
+
+		if (loginok == null) {
+		%>
+		<button type="button"
+			onclick="location.href='index.jsp?main=login/loginForm.jsp'" style="margin-top: 35px;"
+			class="btn btn-outline-danger">로그인</button>
+		<%
+		}else{
+			%>
+			<div  class="d-inline-flex" style="margin-top: 45px;">
+			<b style="font-size: 10pt;"><%=name %></b><p style="font-size: 10pt;">님 환영합니다</p>
+			</div>
+			<button type="button"
+			onclick="location.href='login/logoutAction.jsp'" style="margin-top: 8px;" 
+			class="btn btn-outline-danger">로그아웃</button>
+			
+			<%
+		}
+		%>
+
+	</div>
 </body>
 </html>

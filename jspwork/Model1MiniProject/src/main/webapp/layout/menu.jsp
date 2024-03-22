@@ -22,7 +22,11 @@ String root = request.getContextPath();
 
 <title>Insert title here</title>
 </head>
+<%
+String myid = (String) session.getAttribute("myid");
+String loginok = (String) session.getAttribute("loginok");
 
+%>
 <body>
 	<%-- <a href="<%=root%>/">메인</a>&nbsp;&nbsp;&nbsp;
 	<a href="<%=root%>/">로그인</a>&nbsp;&nbsp;&nbsp;
@@ -47,8 +51,8 @@ String root = request.getContextPath();
 							href="#">게시판</a>
 							<ul class="sub-menu">
 								<li><a
-									href="#"><i
-										class="icon-wrench"></i> 고객게시판</a></li>
+									href="index.jsp?main=memberguest/guestList.jsp"><i
+										class="icon-wrench"></i> 회원방명록</a></li>
 								<li><a
 									href="#"><i
 										class="icon-credit-card"></i> 이미지게시판</a></li>
@@ -65,9 +69,16 @@ String root = request.getContextPath();
 								<li><a
 									href="index.jsp?main=member/addForm.jsp"><i
 										class="icon-wrench"></i> 회원가입</a></li>
-								<li><a
-									href="index.jsp?main=member/memberList.jsp"><i
+								<%
+									if(loginok!=null && myid.equals("admin")){
+										%>
+										<li><a
+										href="index.jsp?main=member/memberList.jsp"><i
 										class="icon-credit-card"></i> 회원목록</a></li>
+										<%
+									}
+								%>
+								
 								<li><a
 									href="index.jsp?main=member/myPage.jsp"><i
 										class="icon-gift"></i> 마이페이지</a></li>

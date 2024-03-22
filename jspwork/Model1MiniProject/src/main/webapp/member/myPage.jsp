@@ -46,13 +46,15 @@ function funcdel(num) {
 	List<MemberDto> list = dao.getAllMembers();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
+	String myid = (String) session.getAttribute("myid");
+	String loginok = (String) session.getAttribute("loginok");
 %>
 <body>
 	<div style="margin: 30px 50px; width: 800px;" class="div1">
 		
 		<%
 		for(MemberDto dto:list){
-			
+			if(loginok!=null && myid.equals(dto.getId())){
 		
 		%>
 		<table class="table table-bordered" >
@@ -64,7 +66,7 @@ function funcdel(num) {
 					NAME | <%=dto.getName() %>
 				</td>
 				<td rowspan="7" style="width: 150px;" align="center" valign="middle">
-					<button class="btn btn-outline-dark">수정</button><br><br>
+					<button class="btn btn-outline-dark" type="button" onclick="location.href='index.jsp?main=member/updatepassForm.jsp?num=<%=dto.getNum()%>'">수정</button><br><br>
 					<button class="btn btn-outline-danger" type="button" onclick="funcdel(<%=dto.getNum()%>)">탈퇴</button>
 				</td>
 			</tr>
@@ -102,7 +104,8 @@ function funcdel(num) {
 		<br>
 			<%
 			}
-			%>
+		}
+	%>
 		
 	</div>
 	<!-- The Modal -->

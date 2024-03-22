@@ -24,19 +24,8 @@
 	boolean b = dao.isEqualPass(num, pass); 
 	
 	if(b){
-		dao.deleteMember(num);
-		
-		//세션삭제
-		session.removeAttribute("loginok");
-		session.removeAttribute("myid");
-		session.removeAttribute("saveok");
-		%>
-		<script type="text/javascript">
-			alert("삭제되었습니다");
-			location.href="../index.jsp?main=member/myPage.jsp";
-		</script>
-		<%
-		
+
+		response.sendRedirect("../index.jsp?main=member/updateForm.jsp?num="+num);
 	
 	} else {
 	%>

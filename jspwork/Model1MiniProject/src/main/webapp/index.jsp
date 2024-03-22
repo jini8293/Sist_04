@@ -22,12 +22,12 @@
 	div.title{
 		width: 100%;
 		height: 80px;
-		line-height: 80px;
+		/* line-height: 80px; */
 		font-size: 30pt;
 		font-family: IBM Plex Sans KR;
-		text-align: center;
-		top: 20px;
-		margin-bottom: 20px;
+		/* text-align: center; */
+		/* top: 20px; */
+		/* margin-bottom: 20px; */
 	}
 	
 	div.menu{

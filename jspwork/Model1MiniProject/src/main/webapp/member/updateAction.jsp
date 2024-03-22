@@ -1,3 +1,4 @@
+<%@page import="data.dto.MemberDto"%>
 <%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -16,36 +17,28 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%
-	String num = request.getParameter("num");
-	String pass = request.getParameter("pass");
+	request.setCharacterEncoding("utf-8");
 
 	MemberDao dao = new MemberDao();
-	boolean b = dao.isEqualPass(num, pass); 
+
+	String name = request.getParameter("name");
+	String hp = request.getParameter("hp");
+	String addr = request.getParameter("addr");
+	String email = request.getParameter("email1")+"@"+request.getParameter("email2");
+	String num = request.getParameter("num");
+
+	MemberDto dto = new MemberDto();
+	dto.setName(name);
+	dto.setHp(hp);
+	dto.setAddr(addr);
+	dto.setEmail(email);
+	dto.setNum(num);
+
+	dao.updateMember(dto);
 	
-	if(b){
-		dao.deleteMember(num);
-		
-		//세션삭제
-		session.removeAttribute("loginok");
-		session.removeAttribute("myid");
-		session.removeAttribute("saveok");
-		%>
-		<script type="text/javascript">
-			alert("삭제되었습니다");
-			location.href="../index.jsp?main=member/myPage.jsp";
-		</script>
-		<%
-		
-	
-	} else {
-	%>
-	<script type="text/javascript">
-		alert("비밀번호가 틀렸습니다");
-		history.back();
-	</script>
-	<%
-	}
+	response.sendRedirect("../index.jsp?main=member/myPage.jsp");
 	%>
 </body>
 </html>

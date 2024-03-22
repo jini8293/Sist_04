@@ -14,8 +14,6 @@
     <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="uploadboard.data.UploadBoardDao"/>
     <fullyQualifiedTypeName name="uploadboard.data.UploadBoardDto"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="simpleboard.data.SimpleBoardDto"/>
     <fullyQualifiedTypeName name="simpleboardanswer.model.SimpleAnswerDto"/>
     <fullyQualifiedTypeName name="java.sql.Time"/>
@@ -23,8 +21,10 @@
     <fullyQualifiedTypeName name="ajaxwrite.model.AjaxWriteDto"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="mysql.db.DbConnect"/>
-    <fullyQualifiedTypeName name="data.dto.MemberDto"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="data.dto.MemberDto"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
