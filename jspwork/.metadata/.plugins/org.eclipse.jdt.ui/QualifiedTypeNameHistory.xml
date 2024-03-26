@@ -19,12 +19,13 @@
     <fullyQualifiedTypeName name="java.sql.Time"/>
     <fullyQualifiedTypeName name="mem_gaip.model.MemgaipDto"/>
     <fullyQualifiedTypeName name="ajaxwrite.model.AjaxWriteDto"/>
-    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="mysql.db.DbConnect"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="data.dto.MemberDto"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="data.dto.MemberDto"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="mysql.db.DbConnect"/>
+    <fullyQualifiedTypeName name="data.dto.GuestDto"/>
 </qualifiedTypeNameHistroy>

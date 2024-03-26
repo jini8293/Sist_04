@@ -24,12 +24,12 @@ if(saveok!=null){
 
 %>
 <body>
-<div style="margin: 50px 50px;">
+<div style="margin: 100px 350px;">
 	<form action="login/loginAction.jsp" method="post">
-		<table class="table table-bordered" style="width: 300px;">
+		<table class="table table-bordered" style="width: 400px;">
 			
 			<tr>
-			<td rowspan="4" width="300">
+			<td rowspan="4" width="200" align="center" valign="middle">
 			로그인
 			</td>
 				<td>

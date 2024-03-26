@@ -22,7 +22,7 @@
 	MemberDao dao = new MemberDao();
 	String name = dao.getName(id);
 	%>
-	<div style="margin: 80px 370px;">
+	<div style="margin: 100px 430px;">
 		<img src="image/bban2.jpeg" width="200" style="margin-bottom: 20px; border-radius: 200px; margin-left: 20px;">
 		<h4 style=" margin-left: 22px;"><%=name%>님이 로그인중
 		</h4>

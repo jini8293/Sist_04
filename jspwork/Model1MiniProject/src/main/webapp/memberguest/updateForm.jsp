@@ -1,3 +1,5 @@
+<%@page import="data.dto.GuestDto"%>
+<%@page import="data.dao.GuestDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,13 +49,27 @@ function readURL(input) {
 }
 
 </script>
+<%
+
+	//num,currentPage
+	String num = request.getParameter("num");
+	String currentPage = request.getParameter("currentPage");
+	
+	GuestDao dao = new GuestDao();
+	GuestDto dto = dao.getData(num);
+
+%>
 </head>
 <body>
+
 <div style="margin: 50px 130px; width: 600px;">
-	<form action="memberguest/guestAction.jsp" method="post" enctype="multipart/form-data">
+	<form action="memberguest/updateAction.jsp" method="post" enctype="multipart/form-data">
+	<!-- num hidden: 페이징 처리시는 currentPage도 hidden처리 -->
+	<input type="hidden" name=num  value="<%=num%>">
+	<input type="hidden" name="currentPage" value="<%=currentPage%>">
 		<table class="table table-bordered">
 			<caption align="top">
-				<b>방명록 등록</b>&nbsp;&nbsp;
+				<b>방명록 수정</b>&nbsp;&nbsp;
 				<i class="bi bi-camera camera fs-3" style="margin-top: 10px;"></i>
 				<input type="file" name="photo" id="photo" style="visibility: hidden;" onchange="readURL(this)">
 			</caption>
@@ -62,16 +78,20 @@ function readURL(input) {
 				<td>
 					<textarea style="width: 500px; height: 100px;"
 					name="content" required="required"
-					class="form-control"></textarea>
+					class="form-control"><%=dto.getContent() %></textarea>
 				</td>
 				<td>
-					<button type="submit" class="btn btn-outline-danger"
-					style="width: 100px; height: 100px;">등록</button>
+					<button type="submit" class="btn btn-outline-warning"
+					style="width: 100px; height: 100px;">수정</button>
 				</td>
 			</tr>
 		</table>
+		<button type="button" class="btn btn-outline-dark"
+					style="width: 100px; height: 50px;" onclick="history.back()">이전</button>
 	</form>
 	<img id="preshow">
+	<img id="showing" style="position: absolute; left: 800px; top: 100px; max-width: 200px;"
+src="<%=(dto.getPhotoname()==null?"":"save/"+dto.getPhotoname())%>">
 </div>
 </body>
 </html>
