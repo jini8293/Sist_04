@@ -25,7 +25,9 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="data.dto.MemberDto"/>
+    <fullyQualifiedTypeName name="data.dto.GuestDto"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="mysql.db.DbConnect"/>
-    <fullyQualifiedTypeName name="data.dto.GuestDto"/>
+    <fullyQualifiedTypeName name="data.dao.AnswerGuestDao"/>
+    <fullyQualifiedTypeName name="data.dto.AnswerGuestDto"/>
 </qualifiedTypeNameHistroy>

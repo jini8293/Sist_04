@@ -21,6 +21,7 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 
@@ -89,6 +90,48 @@
 				location.href = 'memberguest/deleteAnswer.jsp?idx='+idx+'&currentPage='+currentPage;
 			}
 		});
+		
+		//수정아이콘 누르면 모달창
+		$("i.anup").click(function() {
+			var idx = $(this).attr("idx");
+			//alert(idx);
+			
+			$("#idx").val(idx);
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				url:"memberguest/answerContent.jsp",
+				data:{
+					"idx":idx
+				},
+				success:function(res){
+					$("#idx").val(res.idx);
+					$("#ucontent").val(res.story);
+				}
+			})
+		})
+		
+		$("#btnupdate").click(function(){
+			
+			var idx = $("#idx").val();
+			var ucontent= $("#ucontent").val();
+			$.ajax({
+				type : "post",
+				url : "memberguest/updateAnswer.jsp",
+				dataType : "html",
+				data : {
+					"idx":idx,
+					"ucontent":ucontent
+				},
+				success : function() {
+
+				location.reload();
+
+				
+				}
+			});
+		})
+		
 	});
 	
 </script>
@@ -296,7 +339,8 @@
 												<span style="margin-top: 3px;">
 													<i class="bi bi-x-lg andel" style="float: right; color: red;"  idx=<%=adto.getIdx() %> currentPage=<%=currentPage %>></i>
 													
-													<i class="bi bi-wrench anup" style="float: right; margin-right: 5px; color: green"></i>
+													<i class="bi bi-wrench anup" style="float: right; margin-right: 5px; color: green"
+													data-bs-toggle="modal" data-bs-target="#myModal" idx="<%=adto.getIdx()%>"></i>
 												</span>
 												<%
 											}
@@ -310,7 +354,7 @@
 								}
 							%> 
 						</table>
-						<hr>
+						
 					</div>
 				</div>
 
@@ -360,7 +404,34 @@
   
   </ul>
  
-  
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">댓글 수정</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="updateform d-inline-flex">
+        	<input type="hidden" id="idx">
+        	<input type="text" id="ucontent">&nbsp;&nbsp;&nbsp;
+        	<button type="button" class="btn btn-danger" id="btnupdate">수정</button>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
 </div>
 </body>
 </html>

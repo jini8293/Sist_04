@@ -20,7 +20,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="span"/>
 		<list key="findhistory">
+			<item value="span"/>
+			<item value="div"/>
 		</list>
 		<list key="replacehistory">
 		</list>
