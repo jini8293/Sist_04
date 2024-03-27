@@ -4,6 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&display=swap"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<html class="csstransforms no-csstransforms3d csstransitions">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <%
@@ -18,11 +26,30 @@
 	charset="utf-8"></script>	
 </head>
 <body>
-<form action="smart/smartaction.jsp" method="post">
-	<table style="width: 800px;margin-left: 100px;">
-		
+<form action="smartboard/smartaction.jsp" method="post">
+	<table style="width: 800px;margin-left: 100px;" class="table">
+		<caption align="top" style="color: balck"><B>[ (●'◡'●) 스마트 게시판 ]</B></caption>
 		<tr>
+			<th width="100" valign="middle" style="text-align: center;">
+				작성자
+			</th>
 			<td>
+				<input type="text" name="writer" class="form-control"
+				required="required" style="width: 130px;">
+			</td>
+		</tr>
+		<tr>
+			<th width="100" style="text-align: center;" valign="middle">
+				제&nbsp;&nbsp;&nbsp;&nbsp;목
+			</th>
+			<td>
+				<input type="text" name="subject" class="form-control"
+				required="required" style="width: 500px;">
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="2">
 				<textarea name="content" id="content"		
 					required="required"			
 					style="width: 100%;height: 300px;display: none;"></textarea>		
@@ -31,13 +58,13 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<button type="button" class="btn"
+				<button type="button" class="btn btn-outline-danger"
 					style="width: 120px;"
 					onclick="submitContents(this)">DB저장</button>
 				
-				<button type="button" class="btn"
+				<button type="button" class="btn btn-outline-dark"
 					style="width: 120px;"
-					onclick="location.href='main.jsp?go=smart/smartlist.jsp'">목록</button>
+					onclick="location.href='index.jsp?main=smartboard/boardlist.jsp'">목록</button>
 			</td>
 		</tr>
 		

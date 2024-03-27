@@ -57,7 +57,7 @@ String loginok = (String) session.getAttribute("loginok");
 									href="#"><i
 										class="icon-credit-card"></i> 이미지게시판</a></li>
 								<li><a
-									href="#"><i
+									href="index.jsp?main=smartboard/boardlist.jsp"><i
 										class="icon-gift"></i> 스마트게시판</a></li>
 							</ul></li>
 						<li><a
