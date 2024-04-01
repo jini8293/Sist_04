@@ -193,15 +193,14 @@ public class SmartDao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "update smartboard set writer=?, subject=?, content=? where num=?";
+		String sql = "update smartboard set subject=?, content=? where num=?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, dto.getWriter());
-			pstmt.setString(2, dto.getSubject());
-			pstmt.setString(3, dto.getContent());
-			pstmt.setString(4, dto.getNum());
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getNum());
 
 			pstmt.execute();
 

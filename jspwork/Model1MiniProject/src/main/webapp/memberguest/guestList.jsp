@@ -420,7 +420,8 @@
       <div class="modal-body">
         <div class="updateform d-inline-flex">
         	<input type="hidden" id="idx">
-        	<input type="text" id="ucontent">&nbsp;&nbsp;&nbsp;
+        	<input type="text" id="unickname" style="width: 100px;">
+        	<input type="text" id="ucontent" style="width: 300px;">&nbsp;&nbsp;&nbsp;
         	<button type="button" class="btn btn-danger" id="btnupdate">수정</button>
         </div>
       </div>

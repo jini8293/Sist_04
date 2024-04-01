@@ -17,6 +17,9 @@
 <body>
 <%
 	request.setCharacterEncoding("utf-8");
+	String num = request.getParameter("num");
+	String currentPage = request.getParameter("currentPage");
+	
 %>
 
 <jsp:useBean id="dao" class="data.dao.SmartDao"/>
@@ -24,9 +27,8 @@
 <jsp:setProperty property="*" name="dto"/>
 
 <%
-	dao.insertSmart(dto);
-	int num = dao.getMaxNum();
-	response.sendRedirect("../index.jsp?main=smartboard/contentview.jsp?num="+num+"&currentPage=1");
+	dao.updateSmart(dto);
+	response.sendRedirect("../index.jsp?main=smartboard/contentview.jsp?num="+num+"&currentPage="+currentPage);
 %>
 </body>
 </html>

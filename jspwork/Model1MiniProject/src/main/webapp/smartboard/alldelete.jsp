@@ -1,3 +1,4 @@
+<%@page import="data.dao.SmartDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,17 +17,20 @@
 </head>
 <body>
 <%
-	request.setCharacterEncoding("utf-8");
-%>
+//nums 얻기
+String nums = request.getParameter("nums");
 
-<jsp:useBean id="dao" class="data.dao.SmartDao"/>
-<jsp:useBean id="dto" class="data.dto.SmartDto"/>
-<jsp:setProperty property="*" name="dto"/>
+//,로 분리해서 배열선언
+String [] num = nums.split(",");
 
-<%
-	dao.insertSmart(dto);
-	int num = dao.getMaxNum();
-	response.sendRedirect("../index.jsp?main=smartboard/contentview.jsp?num="+num+"&currentPage=1");
+//배열의 갯수만큼 delete
+SmartDao dao = new SmartDao();
+for(String n:num){
+	dao.deleteSmart(n);
+}
+
+//목록으로 이동
+response.sendRedirect("../index.jsp?main=smartboard/boardlist.jsp");
 %>
 </body>
 </html>

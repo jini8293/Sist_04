@@ -21,6 +21,8 @@ C:\½Ö¿ë 4\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\170
 \jspProject\src\main\java
 C:\sist04\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3320729281.index
 \jspProject\src\main\java
+C:\sist04\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2103737641.index
+\Model1MiniProject\src\main\java
 C:\sist04\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\736112621.index
 \jspProject\src\main\java
 C:\sist04\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3453619141.index

@@ -1,3 +1,4 @@
+<%@page import="data.dao.SmartDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,17 +17,14 @@
 </head>
 <body>
 <%
-	request.setCharacterEncoding("utf-8");
-%>
+String num = request.getParameter("num");
+String currentPage = request.getParameter("currentPage");
 
-<jsp:useBean id="dao" class="data.dao.SmartDao"/>
-<jsp:useBean id="dto" class="data.dto.SmartDto"/>
-<jsp:setProperty property="*" name="dto"/>
+SmartDao dao = new SmartDao();
 
-<%
-	dao.insertSmart(dto);
-	int num = dao.getMaxNum();
-	response.sendRedirect("../index.jsp?main=smartboard/contentview.jsp?num="+num+"&currentPage=1");
+dao.deleteSmart(num);
+
+response.sendRedirect("../index.jsp?main=smartboard/boardlist.jsp?currentPage="+currentPage);
 %>
 </body>
 </html>

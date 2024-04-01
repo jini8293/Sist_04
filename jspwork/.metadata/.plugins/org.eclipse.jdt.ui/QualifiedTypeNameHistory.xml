@@ -26,9 +26,11 @@
     <fullyQualifiedTypeName name="data.dto.GuestDto"/>
     <fullyQualifiedTypeName name="data.dao.AnswerGuestDao"/>
     <fullyQualifiedTypeName name="data.dto.AnswerGuestDto"/>
-    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="mysql.db.DbConnect"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="data.dto.SmartDto"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="mysql.db.DbConnect"/>
+    <fullyQualifiedTypeName name="data.dao.SmartAnswerDao"/>
+    <fullyQualifiedTypeName name="data.dto.SmartAnswerDto"/>
 </qualifiedTypeNameHistroy>
