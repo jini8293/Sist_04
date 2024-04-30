@@ -35,6 +35,8 @@ C:\½Ö¿ë 4\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\332
 \jspProject\src\main\java
 C:\sist04\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3956544981.index
 \JspAjaxProject\src\main\java
+C:\sist04\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4033439745.index
+\JSTLProject\src\main\java
 C:\sist04\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4120065775.index
 \JspAjaxProject\src\main\java
 C:\sist04\work\jspwork\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3320629475.index

@@ -142,8 +142,8 @@ a:hover{
 	for(SmartDto dto : list){
 		
 		//댓글 변수에 총 댓글갯수 넣기
-		int acount = adao.getAnswerData(dto.getNum()).size();
-		dto.setAnswercount(answercount);
+		//int acount = adao.getAnswerData(dto.getNum()).size();
+		//dto.setAnswercount(answercount);
 	}
 	
 %>

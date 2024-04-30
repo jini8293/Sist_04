@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="si" class="com.sist.ex5.SawonInfo">
+	<constructor-arg value="김지은"/>
+	<constructor-arg value="사원"/>
+	<property name="pay" value="500"/>
+	<property name="buseo">
+		<list>
+			<value>기획부</value>
+			<value>프론트기획</value>
+			<value>백기획</value>
+		</list>
+	</property>
+</bean>
+
+<bean id="emp" class="com.sist.ex5.Emp">
+	<constructor-arg value="쌍용회사"/>
+	<property name="si" ref="si"/>
+	<property name="emploc" value="서울시 강남구 테헤란로 147"/>
+</bean>
+
+</beans>

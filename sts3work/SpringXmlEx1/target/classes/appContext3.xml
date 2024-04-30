@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="sawondata" class="com.sist.ex3.SawonData">
+		<constructor-arg value="김지은"/>
+		<property name="pay" value="500"/>
+		<property name="ipsaday" value="2024.01.03"/>
+	</bean>
+	
+	<bean id="sawon" class="com.sist.ex3.Sawon">
+		<constructor-arg ref="sawondata"/>
+	</bean>
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="stu" class="com.sist.ex4.Student">
+		<constructor-arg value="김지은"/>
+		<constructor-arg value="23"/>
+		<property name="hobby">
+			<list>
+				<value>넷플릭스</value>
+				<value>게임</value>
+				<value>여행</value>
+				<value>코딩</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sj" class="com.sist.ex4.Sungjuk">
+		<property name="kor" value="99"/>
+		<property name="eng" value="100"/>
+		<property name="mat" value="100"/>
+		<property name="stu" ref="stu"/>
+	</bean>
+
+</beans>
