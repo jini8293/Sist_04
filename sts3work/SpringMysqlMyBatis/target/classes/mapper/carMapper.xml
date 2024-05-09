@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mybatis.SpringCarDao">
+
+	<select id="getAllMyCar" resultType="scdto">
+		select * from springcar order by num desc
+	</select>
+	
+	<!-- 전체 갯수 얻기 -->
+	<select id="totalcountCar" resultType="int">
+		select count(*) from springcar 
+	</select>
+	
+	<insert id="insertMyCar" parameterType="scdto">
+		insert into springcar values(null,#{carname},#{carprice},#{carcolor},#{carguip})
+	</insert>
+	
+	<!-- num에 대한 dto조회 -->
+	<select id="selectOneCar" parameterType="String" resultType="scdto">
+		select * from springcar where num = #{num}
+	</select>
+	
+	<update id="updateMyCar" parameterType="scdto">
+		update springcar set carname=#{carname}, carprice=#{carprice}, carcolor=#{carcolor}, carguip=#{carguip} where num=#{num}
+	</update>
+	
+	<delete id="deleteMyCar">
+		delete from springcar where num=#{num}
+	</delete>
+	
+</mapper>
