@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.member.MemberDao">
+
+	<!-- id중복체크 -->
+	<select id="idCheckOfMember" resultType="int" parameterType="String">
+		select count(*) from smember where id = #{id}
+	</select>
+
+	<select id="getAllMember" resultType="mdto">
+		select * from smember order by num desc
+	</select>
+	
+	<!-- 전체 갯수 얻기 -->
+	<select id="totalcountMember" resultType="int">
+		select count(*) from smember 
+	</select>
+	
+	<insert id="insertMember" parameterType="mdto">
+		insert into smember values(null,#{name},#{id},#{pass},#{hp},now())
+	</insert>
+	
+	<!-- num에 대한 dto조회 -->
+	<select id="selectOneMember" parameterType="String" resultType="mdto">
+		select * from smember where num = #{num}
+	</select>
+	
+	<update id="updateMember" parameterType="mdto">
+		update smember set name=#{name}, hp=#{hp} where num=#{num}
+	</update>
+	
+	<select id="passCheckMember" parameterType="HashMap" resultType="int">
+		select count(*) from smember where num = #{num} and pass = #{pass}
+	</select>
+	
+	<delete id="deleteMember">
+		delete from smember where num=#{num}
+	</delete>
+	
+</mapper>

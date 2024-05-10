@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.board.BoardDao">
+
+	<!-- id중복체크 -->
+	<select id="idCheckOfMember" resultType="int" parameterType="String">
+		select count(*) from smember where id = #{id}
+	</select>
+
+	<select id="selectAllBoard" resultType="bdto">
+		select * from sboard order by num desc
+	</select>
+	
+	<!-- 전체 갯수 얻기 -->
+	<select id="totalcountBoard" resultType="int">
+		select count(*) from sboard
+	</select>
+	
+	<select id="maxNumBoard" resultType="int">
+		select ifnull(max(num),0) from sboard
+	</select>
+	
+	<insert id="insertBoard" parameterType="bdto">
+		insert into sboard values(null,#{writer},#{subject},#{photo},#{content},0,now())
+	</insert>
+	
+	<!-- num에 대한 dto조회 -->
+	<select id="selectOneBoard" parameterType="int" resultType="bdto">
+		select * from sboard where num = #{num}
+	</select>
+	
+	<update id="updateReadCountBoard" parameterType="int">
+		update sboard set readcount=readcount+1 where num = #{num}
+	</update>
+	
+	<update id="updateMember" parameterType="bdto">
+		update smember set name=#{name}, hp=#{hp} where num=#{num}
+	</update>
+	
+	<select id="passCheckMember" parameterType="HashMap" resultType="int">
+		select count(*) from smember where num = #{num} and pass = #{pass}
+	</select>
+	
+	<delete id="deleteMember">
+		delete from smember where num=#{num}
+	</delete>
+	
+	<!-- 페이징 -->
+   <select id="selectPagingListOfMember" parameterType="HashMap" resultType="bdto">
+      select * from sboard order by num desc limit #{start}, #{perpage}
+   </select>
+	
+</mapper>

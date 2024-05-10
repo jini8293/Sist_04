@@ -19,6 +19,8 @@
 <div style="margin: 30px 50px;">
 	<button type="button" class="btn btn-outline-danger"
 		onclick="location.href='writeform'">고객 정보입력</button>
+		<button type="button" class="btn btn-outline-danger"
+		onclick="location.href='../samsung/list'">차목록</button>
 		<br><br>
 	<c:if test="${totalcount==0 }">
 		<h3 class="alert alert-info">저장된 고객의 정보가 없습니다</h3>
