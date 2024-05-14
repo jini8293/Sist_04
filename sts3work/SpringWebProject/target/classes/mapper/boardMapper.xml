@@ -33,21 +33,28 @@
 		update sboard set readcount=readcount+1 where num = #{num}
 	</update>
 	
-	<update id="updateMember" parameterType="bdto">
-		update smember set name=#{name}, hp=#{hp} where num=#{num}
+	<update id="updateBoard" parameterType="bdto">
+		update sboard set subject=#{subject}, content=#{content} 
+		<if test="photo!='no'">
+			,photo=#{photo}
+		</if>
+		where num=#{num}
 	</update>
 	
 	<select id="passCheckMember" parameterType="HashMap" resultType="int">
 		select count(*) from smember where num = #{num} and pass = #{pass}
 	</select>
 	
-	<delete id="deleteMember">
-		delete from smember where num=#{num}
+	<delete id="deleteBoard">
+		delete from sboard where num=#{num}
 	</delete>
 	
 	<!-- 페이징 -->
    <select id="selectPagingListOfMember" parameterType="HashMap" resultType="bdto">
       select * from sboard order by num desc limit #{start}, #{perpage}
    </select>
-	
+   
+   <select id="selectPhotoOfBoard" resultType="bdto">
+   	  select * from sboard where photo!='no' order by num desc
+   </select>
 </mapper>

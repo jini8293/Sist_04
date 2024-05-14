@@ -142,5 +142,80 @@ public class BoardController {
 		return "board/content";	
 	}
 	
+	@GetMapping("/updateform")
+	public ModelAndView updateform(@RequestParam int num, @RequestParam String currentPage) {
+		ModelAndView model = new ModelAndView();
+		
+		BoardDto dto = dao.getOneData(num);
+		model.addObject("dto",dto);
+		model.addObject("currentPage",currentPage);
+		
+		model.setViewName("board/updateForm");
+		return model;
+	}
+	
+	@PostMapping("/update")
+	public String update(@ModelAttribute("dto") BoardDto dto, @RequestParam ArrayList<MultipartFile> upload,
+			HttpSession session, @RequestParam String currentPage, @RequestParam int num) {
+
+		// 이미지가 업로드될 폴더
+		String path = session.getServletContext().getRealPath("/WEB-INF/photo");
+		System.out.println(path);
+
+		// 이미지 업로드 안할경우 no라고 저장
+		String photo = "";
+
+		// 사진선책을 하면 ,로 나열
+		if (upload.get(0).getOriginalFilename().equals("")) {
+			photo = "no";
+		} else {
+			for (MultipartFile f : upload) {
+				String fname = f.getOriginalFilename();
+				photo += fname + ",";
+
+				// 업로드
+				try {
+					f.transferTo(new File(path + "\\" + fname));
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			// photo에서 마지막 ,제거
+			photo = photo.substring(0, photo.length() - 1);
+		}
+		//dto의 photo에 넣어주기
+		dto.setPhoto(photo);
+		
+		dao.updateBoard(dto);
+		
+		return "redirect:content?num="+num+"&currentPage="+currentPage;
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam int num,HttpSession session, @RequestParam String currentPage) {
+		String photo = dao.getOneData(num).getPhoto();
+		
+		if(!photo.equals("no")) {
+			String []fname=photo.split(",");
+			//실제 업로드 경로
+			String path = session.getServletContext().getRealPath("/WEB-INF/photo");
+			for(String f:fname) {
+				File file = new File(path+"\\"+f);
+				file.delete();
+			}
+		}
+		
+		dao.deleteBoard(num);
+		
+		return "redirect:list?currentPage="+currentPage;
+	}
+	
+	@GetMapping("/list2")
+	public String list2() {
+		return "board/ajaxList";
+		
+	}
 	
 }

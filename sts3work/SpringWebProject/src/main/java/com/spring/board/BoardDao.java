@@ -57,4 +57,21 @@ public class BoardDao implements BoardDaoIn {
 		return session.selectList("selectPagingListOfMember", map);
 	}
 
+	@Override
+	public void updateBoard(BoardDto dto) {
+		session.update("updateBoard", dto);
+		
+	}
+
+	@Override
+	public void deleteBoard(int num) {
+		session.delete("deleteBoard", num);
+		
+	}
+
+	@Override
+	public List<BoardDto> getPhotoLists() {
+		return session.selectList("selectPhotoOfBoard");
+	}
+
 }
