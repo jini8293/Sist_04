@@ -6,4 +6,5 @@ public interface MyShopDaoInter extends JpaRepository<MyShopDto, Long> {
 
 
 
+
 }

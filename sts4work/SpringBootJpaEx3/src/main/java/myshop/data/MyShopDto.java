@@ -31,6 +31,7 @@ public class MyShopDto {
 	@Column
 	private String sangipgo;
 	@CreationTimestamp //엔티티 만들어지는 그 시간이 자동 등록
+	@Column(updatable = false)//수정시 이컬럼은 수정하지 않는다
 	private Timestamp writeday;
 
 }
