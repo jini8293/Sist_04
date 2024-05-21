@@ -32,10 +32,10 @@
 		<tr th:each="dto,iter:${list}">				
 			<td align="center" valign="middle">[[${iter.count}]]</td>
 			<td align="center" valign="middle">
-				<a href="detail?num=${dto.num }" style="text-decoration: none; color: black;">
-					<img th:src="@{|/save/${dto.carphoto}|}" style="width: 40px;">
-					[[${dto.carname}]]
-				</a>
+				<a th:href="@{/detail(num=${dto.num })}" style="text-decoration: none; color: black;">
+		            <img th:src="@{|/save/${dto.carphoto}|}" style="width: 40px;">
+		            [[${dto.carname}]] <span style="margin-left: 10px; color: red;" th:if="${dto.commentcount>0}">[[[${dto.commentcount]]]</span>
+		        </a>
 			</td>
 			<td align="center" valign="middle">
 				<div class="box" th:style="'background-color:'+${dto.carcolor}+';'"></div>

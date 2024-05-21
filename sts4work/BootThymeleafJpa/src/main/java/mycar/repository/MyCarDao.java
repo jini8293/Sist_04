@@ -37,4 +37,14 @@ public class MyCarDao {
 	public void updateMycar(MyCarDto dto) {
 		daoIn.save(dto); //num이 포함되어있으므로 수정
 	}
+	
+	public void updateMycarNoPhoto(MyCarDto dto) {
+		Long num = dto.getNum();
+		String carname = dto.getCarname();
+		String carcolor = dto.getCarcolor();
+		int carprice = dto.getCarprice();
+		
+		daoIn.updateMycarNoPhoto(num, carname, carcolor, carprice);
+		
+	}
 }

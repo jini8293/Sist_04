@@ -7,8 +7,55 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 <title>Insert title here</title>
+<style type="text/css">
+div{
+	font-family: IBM Plex Sans KR;
+}
+</style>
 </head>
 <body>
-
+<div style="margin: 100px 100px; width: 500px;">
+	<form action="update" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="num" th:value="${dto.num}">
+		<table class="table table-bordered">
+			<caption align="top"><B>수정하기</B></caption>		
+			<tr>
+				<th class="table-danger" width="120" valign="middle" style="text-align: center;">NAME</th>
+				<td>
+					<input type="text" name="carname" class="form-control"
+					style="width: 150px;" required="required" th:value="${dto.carname}"> 
+				</td>
+			</tr>
+			<tr>
+				<th class="table-danger" width="120" valign="middle" style="text-align: center;">PRICE</th>
+				<td>
+					<input type="text" name="carprice" class="form-control"
+					style="width: 150px;" required="required" th:value="${dto.carprice}"> 
+				</td>
+			</tr>
+			<tr>
+				<th class="table-danger" width="120" valign="middle" style="text-align: center;">COLOR</th>
+				<td>
+					<input type="color" name="carcolor" class="form-control"
+					style="width: 150px;" required="required" th:value="${dto.carcolor}"> 
+				</td>
+			</tr>
+			<tr>
+				<th class="table-danger" width="120" valign="middle" style="text-align: center;">PHOTO</th>
+				<td>
+					<b style="color: red; font-size: 10pt;">※수정할 경우에만 파일을 선택해주세요.</b>
+					<input type="file" name="upload" class="form-control"
+					style="width: 300px;"> 
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" class="btn btn-outline-info" value="저장">
+					<input type="button" class="btn btn-outline-warning" value="목록" onclick="location.href='list'">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
 </body>
 </html>
