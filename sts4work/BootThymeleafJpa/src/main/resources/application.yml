@@ -1,0 +1,32 @@
+
+server:
+  port: 9001
+#thymeleaf
+spring:
+  thymeleaf:
+    cache: false
+    
+#mysql setting
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kje
+    username: angel
+    password: a1234
+
+#Jpa setting
+#스키마생성 create:기존 테이블을 삭제후 생성, update:변경된 부분만 반영
+  jpa:
+    hibernate:
+      ddl-auto: update
+#ddl생성시 데이터 베이스 고유기능을 사용할 것인가
+    generate-ddl: true
+#api호출시 실행되는 spl문을 콘솔에 보여줄것인가
+    show-sql: true
+#사용할 데이터 베이스 종류
+    database: mysql
+#mysql 상세지정
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+
+
+

@@ -9,7 +9,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header th:replace="~{fragment/header ::header}"></header>
 	<h3 class="alert alert-info">Home 입니다</h3>
 	<img alt="" src="c1.png">
+	
+	<h3>
+		현재 날짜: 
+		<span th:text="${#calendars.format(#calendars.createNow(),'yyyy년 MM월 dd일 HH시 mm분')}"></span>
+	</h3>
+	
+	<a th:href="@{/hello1}">타임리프 Hello1</a>
+	<a th:href="@{/hello2(name='김지은',age=23)}">타임리프 Hello2</a>
+	<a th:href="@{/list}">타임리프 list</a>
+	<a th:href="@{/login1}">admin login</a>
+	<a th:href="@{/login2}">angel login</a>
+	
+	<button type="button" onclick="location.href='hello1'">hello1</button>
+	<button type="button" onclick="location.href='hello2?name=kim&age=23'">hello2</button>
 </body>
 </html>
