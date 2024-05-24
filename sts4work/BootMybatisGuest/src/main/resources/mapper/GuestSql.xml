@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guest.mapper.GuestMapper">
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from guest
+	</select>
+	
+	<insert id="insertGuest" parameterType="gdto">
+		insert into guest values(null,#{nick},#{pass},#{photo},#{content},0,now())
+	</insert>
+	
+	<select id="getAllGuest" parameterType="gdto">
+		select * from guest order by num desc
+	</select>
+	
+	<select id="CheckPass" parameterType="Map" resultType="int">
+		select count(*) from guest where num=#{num} and pass=#{pass}
+	</select>
+	
+	<delete id="deleteGuest">
+		delete from guest where num=#{num}
+	</delete>
+	
+</mapper>
