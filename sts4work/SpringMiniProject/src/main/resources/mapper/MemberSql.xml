@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.data.mapper.MemberMapperInter">
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from member
+	</select>
+	
+	<insert id="insertMember" parameterType="mdto">
+		insert into member values(null, #{name}, #{id}, #{pass}, #{photo}, #{hp}, #{addr}, #{email},now())
+	</insert>
+	
+	<select id="getAllList" parameterType="mdto">
+		select * from member order by num
+	</select>
+	
+	<select id="getSerchId" parameterType="String" resultType="int">
+		select count(*) from member where id=#{id}
+	</select>
+	
+	<select id="getData" parameterType="String" resultType="mdto">
+		select * from member where num=#{num}
+	</select>
+	
+	<update id="updateMember" parameterType="mdto">
+		update member set name=#{name}, id=#{id}, pass=#{pass}
+		<if test="photoname!='no'">
+		,photoname=#{photoname}
+		</if>
+		, hp=#{hp}, addr=#{addr}, email=#{email} where num=#{num}
+	</update>
+	
+	<delete id="deleteMember">
+		delete from member where num=#{num}
+	</delete>
+	
+</mapper>
