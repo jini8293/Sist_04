@@ -17,8 +17,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div style="margin: 100px 350px;">
-	<form action="login/loginAction.jsp" method="post">
+<div style="margin: 100px 350px;" class="loginform">
+	<form action="loginprocess" method="post">
 		<table class="table table-bordered" style="width: 400px;">
 			
 			<tr>
@@ -28,7 +28,7 @@
 				<td>
 					<input type="text" name="id" class="form-control"
 					required="required" placeholder="id" style="width: 200px;"
-					>
+					value="${sessionScope.saveok==null?"":sessionScope.myid }">
 				</td>
 			</tr>
 			<tr>
@@ -40,7 +40,7 @@
 			<tr>
 				<td>
 					<input type="checkbox"  name="cbsave"
-					>&nbsp;아이디 저장
+					${sessionScope.saveok==null?"":"checked" }>&nbsp;아이디 저장
 				</td>
 			</tr>
 			<tr>

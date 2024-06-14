@@ -22,5 +22,14 @@
 	<i class="bi bi-telephone"></i>&nbsp;010-8293-2124<br>
 	<i class="bi bi-building"></i>&nbsp;서울시 강남구 역삼동 한독빌딩<br>
 	<i class="bi bi-instagram"></i>&nbsp;@imkloln
+	
+	<!-- 로그아웃상태는 기본이미지 -->
+	<c:if test="${sessionScope.loginok==null}">
+		<img alt="" src="../memberimage/admin.png" width="130" height="130" style="border-radius: 100px;">
+	</c:if>
+	<!-- 로그인상태는 로그인한 이미지 -->
+	<c:if test="${sessionScope.loginok!=null}">
+		<img alt="" src="../memberimage/${sessionScope.loginphoto}" width="130" height="130" style="border-radius: 100px;">
+	</c:if>
 </body>
 </html>

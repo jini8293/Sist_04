@@ -16,13 +16,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 <title>Insert title here</title>
 </head>
-<c:set var="root" value="<%=request.getContextPath() %>"/>
 <body>
-<div style="margin: 100px 200px;">
-	<img alt="" src="${root }/image/05.png" width="300" align="left" hspace="20">
-	<br><br>
-	<b>${name }님 로그인중</b><br><br><br>
-	<button type="button" class="btn btn-danger" style="width: 100px;" onclick="location.href='logoutprocess'">로그아웃</button>
-</div>
+<script type="text/javascript">
+	alert("로그인 실패.<br>다시 시도해주세요.");
+	history.back();
+</script>
 </body>
 </html>

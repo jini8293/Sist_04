@@ -1,0 +1,25 @@
+server:
+  port: 9001
+  
+#jsp
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+
+#mysql setting
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/codeconnect
+    username: angel
+    password: a1234
+    
+#mybatis
+mybatis:
+  type-aliases-package: com.code.*
+  mapper-locations:
+  - /mapper/**/*.xml

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.mapper.HireMapper">
+
+<insert id="hireInsert">
+	insert into hire value(null, #{h_c_num}, #{h_ci_num}, #{h_category}, #{h_job}, #{h_tech}, 
+	#{h_career}, #{h_grade}, #{h_location}, #{h_title}, #{h_subject}, #{h_major}, #{h_require}, 
+	#{h_preference}, #{h_benefit}, #{h_process}, #{h_c_id}, #{h_deadline},now(),0)
+</insert>
+
+</mapper>

@@ -37,15 +37,15 @@
 	}
 	
 	div.layout div.info{
-		position: absolute;
-		top: 300px;
-		left: 30px;
-		height: 200px;
-		width: 200px;
-		border: 5px solid purple;
-		border-radius: 30px;
-		padding: 30px 20px;
-	}
+      position: absolute;
+      top: 300px;
+      left: 50px;
+      height: 300px;
+      width: 270px;
+      border: 5px solid purple;
+      border-radius: 30px;
+      padding: 30px 20px;
+   }
 	
 	div.layout div.main{
 		position: absolute;
